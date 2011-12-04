@@ -18,6 +18,7 @@
 
 @interface AIIPAccountViewController : AIAccountViewController {
 	IBOutlet	NSButton		*checkbox_useSSL;
+	IBOutlet	NSButton		*checkbox_useSASL;
 	IBOutlet	NSPopUpButton	*popUp_encoding;
 	
 	IBOutlet	NSTextField	*textField_username;

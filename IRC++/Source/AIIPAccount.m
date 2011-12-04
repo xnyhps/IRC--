@@ -101,6 +101,15 @@ AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status);
 	[connection release]; connection = nil;
 }
 
+- (NSString *)displayName
+{
+	if (connection) {
+		return connection.nickname;
+	}
+	
+	return self.formattedUID;
+}
+
 AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status) {
 	AIGroupChatFlags adiumFlags = 0;
 	
@@ -158,7 +167,10 @@ AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status) {
 		
 		[contact setServersideAlias:[user displayName] silently:NO];
 		[contact setValue:[user realName] forProperty:@"Real Name" notify:NotifyNever];
-		[contact setValue:[NSString stringWithFormat:@"%@@%@", [user username], [user address]] forProperty:@"User Host" notify:NotifyNever];
+		if ([user username] && [user address]) {
+			[contact setValue:[NSString stringWithFormat:@"%@@%@", [user username], [user address]] forProperty:@"User Host" notify:NotifyNever];
+		}
+		[contact setOnline:TRUE notify:NotifyNever silently:YES];
 	}
 	
 	// Post an update notification now that we've modified the flags and names.
@@ -230,11 +242,16 @@ AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status) {
 	[chat setFlags:convertFlags([room modesForMemberUser:user], [user status])
 		forContact:contact];
 	
-	NSString *userHost = [NSString stringWithFormat:@"%@@%@", [user username], [user address]];
+	NSString *userHost = nil;
+	
+	if ([user address] && [user username]) {
+		userHost = [NSString stringWithFormat:@"%@@%@", [user username], [user address]];
+	}
 	
 	[contact setServersideAlias:[user displayName] silently:NO];
 	[contact setValue:[user realName] forProperty:@"Real Name" notify:NotifyNever];
 	[contact setValue:userHost forProperty:@"User Host" notify:NotifyNever];
+	[contact setOnline:TRUE notify:NotifyNever silently:YES];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:Chat_ParticipatingListObjectsChanged
 														object:chat];

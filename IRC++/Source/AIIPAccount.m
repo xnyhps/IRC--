@@ -40,10 +40,15 @@ AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status);
 {
 	connection = [[MVChatConnection alloc] initWithServer:self.host type:MVChatConnectionIRCType port:self.port user:self.UID];
 	
-	connection.secure = [[self preferenceForKey:KEY_IRC_USE_SSL group:GROUP_ACCOUNT_STATUS] boolValue];
-	connection.requestsSASL = [[self preferenceForKey:KEY_IRC_USE_SASL group:GROUP_ACCOUNT_STATUS] boolValue];
-	connection.username = [self preferenceForKey:KEY_IRC_USERNAME group:GROUP_ACCOUNT_STATUS] ?: [self defaultUsername];
-	connection.realName = [self preferenceForKey:KEY_IRC_REALNAME group:GROUP_ACCOUNT_STATUS] ?: [self defaultRealname];
+	connection.secure = [[self preferenceForKey:KEY_IRC_USE_SSL
+										  group:GROUP_ACCOUNT_STATUS] boolValue];
+	connection.requestsSASL = [[self preferenceForKey:KEY_IRC_USE_SASL
+												group:GROUP_ACCOUNT_STATUS] boolValue];
+	connection.username = [self preferenceForKey:KEY_IRC_USERNAME
+										   group:GROUP_ACCOUNT_STATUS] ?: [self defaultUsername];
+	connection.realName = [self preferenceForKey:KEY_IRC_REALNAME
+										   group:GROUP_ACCOUNT_STATUS] ?: [self defaultRealname];
+	connection.password = self.passwordWhileConnected;
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didConnect:) name:MVChatConnectionDidConnectNotification object:connection];
 	

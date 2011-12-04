@@ -9,6 +9,7 @@
 #import "AIIPService.h"
 #import "AIIPAccount.h"
 #import "AIIPAccountViewController.h"
+#import "AIIPJoinChatViewController.h"
 #import <AIUtilities/AIImageAdditions.h>
 #import <AIUtilities/AICharacterSetAdditions.h>
 
@@ -22,9 +23,9 @@
     return [AIIPAccountViewController accountViewController];
 }
 
-//- (DCJoinChatViewController *)joinChatView{
-//	return [ESIRCJoinChatViewController joinChatView];
-//}
+- (DCJoinChatViewController *)joinChatView{
+	return [AIIPJoinChatViewController joinChatView];
+}
 
 //Service Description
 - (NSString *)serviceCodeUniqueID{

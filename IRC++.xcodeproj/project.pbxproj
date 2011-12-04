@@ -19,6 +19,8 @@
 		765C3028148B9D5F00BD5654 /* TCMPortMapper.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 765C3026148B9D5900BD5654 /* TCMPortMapper.framework */; };
 		765C302B148BA27500BD5654 /* AIIPAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 765C302A148BA27500BD5654 /* AIIPAccountViewController.m */; };
 		765C302E148BA37900BD5654 /* AIIPAccountView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 765C302D148BA37900BD5654 /* AIIPAccountView.nib */; };
+		765C3031148BABAF00BD5654 /* AIIPJoinChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 765C3030148BABAF00BD5654 /* AIIPJoinChatViewController.m */; };
+		765C3033148BAC1300BD5654 /* AIIPJoinChatView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 765C3032148BAC1300BD5654 /* AIIPJoinChatView.nib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,6 +58,9 @@
 		765C3029148BA27500BD5654 /* AIIPAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AIIPAccountViewController.h; sourceTree = "<group>"; };
 		765C302A148BA27500BD5654 /* AIIPAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AIIPAccountViewController.m; sourceTree = "<group>"; };
 		765C302D148BA37900BD5654 /* AIIPAccountView.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = AIIPAccountView.nib; path = Resources/AIIPAccountView.nib; sourceTree = "<group>"; };
+		765C302F148BABAF00BD5654 /* AIIPJoinChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIIPJoinChatViewController.h; path = Source/AIIPJoinChatViewController.h; sourceTree = "<group>"; };
+		765C3030148BABAF00BD5654 /* AIIPJoinChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIIPJoinChatViewController.m; path = Source/AIIPJoinChatViewController.m; sourceTree = "<group>"; };
+		765C3032148BAC1300BD5654 /* AIIPJoinChatView.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = AIIPJoinChatView.nib; path = Resources/AIIPJoinChatView.nib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +148,8 @@
 				765C2FFF148B916600BD5654 /* AIIPService.m */,
 				765C3001148B930100BD5654 /* AIIPAccount.h */,
 				765C3002148B930100BD5654 /* AIIPAccount.m */,
+				765C302F148BABAF00BD5654 /* AIIPJoinChatViewController.h */,
+				765C3030148BABAF00BD5654 /* AIIPJoinChatViewController.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -151,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				765C302D148BA37900BD5654 /* AIIPAccountView.nib */,
+				765C3032148BAC1300BD5654 /* AIIPJoinChatView.nib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -208,6 +216,7 @@
 			files = (
 				765C2FEF148B8F6500BD5654 /* InfoPlist.strings in Resources */,
 				765C302E148BA37900BD5654 /* AIIPAccountView.nib in Resources */,
+				765C3033148BAC1300BD5654 /* AIIPJoinChatView.nib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +231,7 @@
 				765C3000148B916600BD5654 /* AIIPService.m in Sources */,
 				765C3003148B930100BD5654 /* AIIPAccount.m in Sources */,
 				765C302B148BA27500BD5654 /* AIIPAccountViewController.m in Sources */,
+				765C3031148BABAF00BD5654 /* AIIPJoinChatViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

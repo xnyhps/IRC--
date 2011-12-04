@@ -23,6 +23,7 @@
 	
 	IBOutlet	NSTextField	*textField_username;
 	IBOutlet	NSTextField *textField_realname;
+	IBOutlet	NSTextView *textView_altNicks;
 	
 	IBOutlet	NSTextView	*textView_commands;
 }

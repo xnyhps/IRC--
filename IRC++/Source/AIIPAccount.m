@@ -71,6 +71,8 @@ AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status);
 	connection.realName = [self preferenceForKey:KEY_IRC_REALNAME
 										   group:GROUP_ACCOUNT_STATUS] ?: [self defaultRealname];
 	connection.password = self.passwordWhileConnected;
+	connection.alternateNicknames = [self preferenceForKey:KEY_IRC_ALTNICKS
+													 group:GROUP_ACCOUNT_STATUS];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self
 											 selector:@selector(didConnect:)

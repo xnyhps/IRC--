@@ -14,6 +14,7 @@
 #define KEY_IRC_COMMANDS @"IRC: Commands"
 #define KEY_IRC_USERNAME @"IRC: Username"
 #define KEY_IRC_REALNAME @"IRC: Real name"
+#define	KEY_IRC_ALTNICKS @"IRC: Alternative nicknames"
 
 @interface AIIPAccount : AIAccount {
 	MVChatConnection *connection;

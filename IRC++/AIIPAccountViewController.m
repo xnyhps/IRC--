@@ -64,6 +64,9 @@
 	NSString *realname = [account preferenceForKey:KEY_IRC_REALNAME group:GROUP_ACCOUNT_STATUS] ?: @"";
 	[textField_realname setStringValue:realname];
 	[textField_realname.cell setPlaceholderString:[((AIIPAccount *)account) defaultRealname]];
+	
+	NSArray *alternativeNicks = [account preferenceForKey:KEY_IRC_ALTNICKS group:GROUP_ACCOUNT_STATUS];
+	[textView_altNicks.textStorage setAttributedString:[[[NSAttributedString alloc] initWithString:alternativeNicks ? [alternativeNicks componentsJoinedByString:@"\n"] : @""] autorelease]];
 }
 
 - (void)saveConfiguration
@@ -96,6 +99,11 @@
 	// Realname
 	[account setPreference:(textField_realname.stringValue.length ? textField_realname.stringValue : nil)
 					forKey:KEY_IRC_REALNAME
+					 group:GROUP_ACCOUNT_STATUS];
+	
+	// Alternative nicknames, either separated by spaces or newlines
+	[account setPreference:(textView_altNicks.textStorage.string.length ? [textView_altNicks.textStorage.string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] : nil)
+					forKey:KEY_IRC_ALTNICKS
 					 group:GROUP_ACCOUNT_STATUS];
 }	
 

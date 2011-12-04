@@ -307,6 +307,10 @@
 				GCC_PREFIX_HEADER = "IRC++/IRC++-Prefix.pch";
 				INFOPLIST_FILE = "IRC++/IRC++-Info.plist";
 				INSTALL_PATH = "“$(HOME)/Library/Application Support/Adium 2.0/PlugIns/”";
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = adiumPlugin;
 			};
@@ -325,6 +329,10 @@
 				GCC_PREFIX_HEADER = "IRC++/IRC++-Prefix.pch";
 				INFOPLIST_FILE = "IRC++/IRC++-Info.plist";
 				INSTALL_PATH = "“$(HOME)/Library/Application Support/Adium 2.0/PlugIns/”";
+				OTHER_LDFLAGS = (
+					"-undefined",
+					dynamic_lookup,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = adiumPlugin;
 			};

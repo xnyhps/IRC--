@@ -14,6 +14,7 @@
 #import <ChatCore/MVChatUser.h>
 #import <Adium/AIChat.h>
 #import <Adium/AIContentEvent.h>
+#import <Adium/ESDebugAILog.h>
 #import <Adium/AIContentControllerProtocol.h>
 #import <Adium/AIChatControllerProtocol.h>
 
@@ -36,6 +37,21 @@ AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status);
 	[super didConnect];
 }
 
+- (void)gotImportantMessage:(NSNotification *)notification
+{
+	AILog(@"(IRC++) %@ (important): %@", self.UID, [[notification userInfo] valueForKey:@"message"]);
+}
+
+- (void)gotInformationalMessage:(NSNotification *)notification
+{
+	AILog(@"(IRC++) %@ (info): %@", self.UID, [[notification userInfo] valueForKey:@"message"]);
+}
+
+- (void)gotRawMessage:(NSNotification *)notification
+{
+	AILog(@"(IRC++) %@ (raw): %@", self.UID, [[notification userInfo] valueForKey:@"message"]);
+}
+
 - (void)connect
 {
 	connection = [[MVChatConnection alloc] initWithServer:self.host type:MVChatConnectionIRCType port:self.port user:self.UID];
@@ -50,7 +66,23 @@ AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status);
 										   group:GROUP_ACCOUNT_STATUS] ?: [self defaultRealname];
 	connection.password = self.passwordWhileConnected;
 	
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didConnect:) name:MVChatConnectionDidConnectNotification object:connection];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(didConnect:)
+												 name:MVChatConnectionDidConnectNotification
+											   object:connection];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(gotImportantMessage:)
+												 name:MVChatConnectionGotImportantMessageNotification
+											   object:connection];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(gotInformationalMessage:)
+												 name:MVChatConnectionGotInformationalMessageNotification
+											   object:connection];
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(gotRawMessage:)
+												 name:MVChatConnectionGotRawMessageNotification
+											   object:connection];
 	
 	[connection connect];
 }

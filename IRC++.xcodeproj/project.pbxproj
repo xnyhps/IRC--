@@ -21,6 +21,11 @@
 		765C302E148BA37900BD5654 /* AIIPAccountView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 765C302D148BA37900BD5654 /* AIIPAccountView.nib */; };
 		765C3031148BABAF00BD5654 /* AIIPJoinChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 765C3030148BABAF00BD5654 /* AIIPJoinChatViewController.m */; };
 		765C3033148BAC1300BD5654 /* AIIPJoinChatView.nib in Resources */ = {isa = PBXBuildFile; fileRef = 765C3032148BAC1300BD5654 /* AIIPJoinChatView.nib */; };
+		765C3039148BC49A00BD5654 /* NSAttributedStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 765C3038148BC49A00BD5654 /* NSAttributedStringAdditions.m */; };
+		765C303D148BC4D800BD5654 /* NSColorAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 765C303C148BC4D800BD5654 /* NSColorAdditions.m */; };
+		765C3040148BC50E00BD5654 /* NSStringAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 765C303F148BC50E00BD5654 /* NSStringAdditions.m */; };
+		765C3045148BC55B00BD5654 /* NSCharacterSetAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 765C3042148BC55A00BD5654 /* NSCharacterSetAdditions.m */; };
+		765C3046148BC55B00BD5654 /* NSScannerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 765C3044148BC55B00BD5654 /* NSScannerAdditions.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -61,6 +66,16 @@
 		765C302F148BABAF00BD5654 /* AIIPJoinChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIIPJoinChatViewController.h; path = Source/AIIPJoinChatViewController.h; sourceTree = "<group>"; };
 		765C3030148BABAF00BD5654 /* AIIPJoinChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIIPJoinChatViewController.m; path = Source/AIIPJoinChatViewController.m; sourceTree = "<group>"; };
 		765C3032148BAC1300BD5654 /* AIIPJoinChatView.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = AIIPJoinChatView.nib; path = Resources/AIIPJoinChatView.nib; sourceTree = "<group>"; };
+		765C3037148BC49A00BD5654 /* NSAttributedStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSAttributedStringAdditions.h; path = Source/NSAttributedStringAdditions.h; sourceTree = "<group>"; };
+		765C3038148BC49A00BD5654 /* NSAttributedStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSAttributedStringAdditions.m; path = Source/NSAttributedStringAdditions.m; sourceTree = "<group>"; };
+		765C303B148BC4D800BD5654 /* NSColorAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSColorAdditions.h; path = Source/NSColorAdditions.h; sourceTree = "<group>"; };
+		765C303C148BC4D800BD5654 /* NSColorAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSColorAdditions.m; path = Source/NSColorAdditions.m; sourceTree = "<group>"; };
+		765C303E148BC50E00BD5654 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSStringAdditions.h; path = Source/NSStringAdditions.h; sourceTree = "<group>"; };
+		765C303F148BC50E00BD5654 /* NSStringAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSStringAdditions.m; path = Source/NSStringAdditions.m; sourceTree = "<group>"; };
+		765C3041148BC55A00BD5654 /* NSCharacterSetAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSCharacterSetAdditions.h; path = Source/NSCharacterSetAdditions.h; sourceTree = "<group>"; };
+		765C3042148BC55A00BD5654 /* NSCharacterSetAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSCharacterSetAdditions.m; path = Source/NSCharacterSetAdditions.m; sourceTree = "<group>"; };
+		765C3043148BC55B00BD5654 /* NSScannerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSScannerAdditions.h; path = Source/NSScannerAdditions.h; sourceTree = "<group>"; };
+		765C3044148BC55B00BD5654 /* NSScannerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NSScannerAdditions.m; path = Source/NSScannerAdditions.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +165,16 @@
 				765C3002148B930100BD5654 /* AIIPAccount.m */,
 				765C302F148BABAF00BD5654 /* AIIPJoinChatViewController.h */,
 				765C3030148BABAF00BD5654 /* AIIPJoinChatViewController.m */,
+				765C3037148BC49A00BD5654 /* NSAttributedStringAdditions.h */,
+				765C3038148BC49A00BD5654 /* NSAttributedStringAdditions.m */,
+				765C303B148BC4D800BD5654 /* NSColorAdditions.h */,
+				765C303C148BC4D800BD5654 /* NSColorAdditions.m */,
+				765C303E148BC50E00BD5654 /* NSStringAdditions.h */,
+				765C303F148BC50E00BD5654 /* NSStringAdditions.m */,
+				765C3041148BC55A00BD5654 /* NSCharacterSetAdditions.h */,
+				765C3042148BC55A00BD5654 /* NSCharacterSetAdditions.m */,
+				765C3043148BC55B00BD5654 /* NSScannerAdditions.h */,
+				765C3044148BC55B00BD5654 /* NSScannerAdditions.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -232,6 +257,11 @@
 				765C3003148B930100BD5654 /* AIIPAccount.m in Sources */,
 				765C302B148BA27500BD5654 /* AIIPAccountViewController.m in Sources */,
 				765C3031148BABAF00BD5654 /* AIIPJoinChatViewController.m in Sources */,
+				765C3039148BC49A00BD5654 /* NSAttributedStringAdditions.m in Sources */,
+				765C303D148BC4D800BD5654 /* NSColorAdditions.m in Sources */,
+				765C3040148BC50E00BD5654 /* NSStringAdditions.m in Sources */,
+				765C3045148BC55B00BD5654 /* NSCharacterSetAdditions.m in Sources */,
+				765C3046148BC55B00BD5654 /* NSScannerAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +387,7 @@
 				765C2FF5148B8F6500BD5654 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

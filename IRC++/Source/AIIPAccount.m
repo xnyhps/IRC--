@@ -7,6 +7,7 @@
 //
 
 #import "AIIPAccount.h"
+#import "NSAttributedStringAdditions.h"
 #import <Adium/AISharedAdium.h>
 #import <Adium/AIContentMessage.h>
 #import <Adium/AIListContact.h>
@@ -168,7 +169,7 @@ AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status) {
 	MVChatRoom *room = [notification object];
 	AIChat *chat = [room attributeForKey:@"AIChat"];
 	MVChatUser *user = [[notification userInfo] valueForKey:@"user"];
-	NSString *reason = [[notification userInfo] valueForKey:@"reason"];
+	NSData *reason = [[notification userInfo] valueForKey:@"reason"];
 	
 	AIListContact *contact = [self contactWithUID:[user displayName]];
 	[chat removeObject:contact];
@@ -190,21 +191,21 @@ AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status) {
 		//		[contact notifyOfChangedPropertiesSilently:NO];
 	}
 	
-	NSString *messageStr;
+	NSAttributedString *message;
 	
 	if (reason) {
-		messageStr = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ left the room (%@).", @"", [NSBundle bundleForClass:[self class]] , nil),
-					  [user displayName], reason];
+		message = [[[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ left the room (", @"", [NSBundle bundleForClass:[self class]], nil), [user displayName]]] autorelease];
+		[(NSMutableAttributedString *)message appendAttributedString:[NSAttributedString attributedStringWithChatFormat:reason options:nil]];
+		[(NSMutableAttributedString *)message appendAttributedString:[[[NSAttributedString alloc] initWithString:@")."] autorelease]];
 	} else {
-		messageStr = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ left the room.", @"", [NSBundle bundleForClass:[self class]] , nil),
-					  [user displayName]];
+		message = [[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ left the room.", @"", [NSBundle bundleForClass:[self class]], nil), [user displayName]]] autorelease];
 	}
 	
 	AIContentEvent *event = [AIContentEvent eventInChat:chat
 											 withSource:nil
 											destination:self
 												   date:[NSDate date]
-												message:[[[NSAttributedString alloc] initWithString:messageStr] autorelease]
+												message:message
 											   withType:@"IRC++"];
 	
 	event.filterContent = YES;
@@ -283,7 +284,7 @@ AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status) {
 	MVChatRoom *room = [notification object];
 	AIChat *chat = [room attributeForKey:@"AIChat"];
 	
-	[chat setTopic:[NSString stringWithUTF8String:[[room topic] bytes]]];
+	[chat setTopic:[[NSAttributedString attributedStringWithChatFormat:[room topic] options:nil] string]];
 }
 
 - (void)roomModeChanged:(NSNotification *)notification
@@ -299,7 +300,6 @@ AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status) {
 	AILogWithSignature(@"%@", notification);
 	
 	AIListContact *user = [self contactWithUID:[[[notification userInfo] objectForKey:@"who"] displayName]];
-    AIListContact *byUser = [self contactWithUID:[[[notification userInfo] objectForKey:@"by"] displayName]];
 	
 	NSUInteger mode = [[[notification userInfo] objectForKey:@"mode"] unsignedLongValue];
     BOOL on = [[[notification userInfo] objectForKey:@"enabled"] boolValue];

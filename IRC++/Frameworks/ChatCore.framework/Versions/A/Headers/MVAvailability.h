@@ -18,14 +18,14 @@
 #define ENABLE_IRC 1
 #endif
 
-#ifndef ENABLE_SILC
-#define ENABLE_SILC 1
+#ifdef ENABLE_SILC
+#undef ENABLE_SILC
 #endif
 
-#ifndef ENABLE_ICB
-#define ENABLE_ICB 1
+#ifdef ENABLE_ICB
+#undef ENABLE_ICB
 #endif
 
 #ifndef ENABLE_XMPP
-#define ENABLE_XMPP 1
+#undef ENABLE_XMPP
 #endif

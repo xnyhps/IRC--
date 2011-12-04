@@ -9,17 +9,24 @@
 /* Begin PBXBuildFile section */
 		765C2FE5148B8F6500BD5654 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 765C2FE4148B8F6500BD5654 /* Cocoa.framework */; };
 		765C2FEF148B8F6500BD5654 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 765C2FED148B8F6500BD5654 /* InfoPlist.strings */; };
+		765C2FF7148B8FFA00BD5654 /* Adium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 765C2FF6148B8FFA00BD5654 /* Adium.framework */; };
+		765C2FF9148B902400BD5654 /* ChatCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 765C2FF8148B902400BD5654 /* ChatCore.framework */; };
+		765C2FFD148B906400BD5654 /* AIIPPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 765C2FFC148B906400BD5654 /* AIIPPlugin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		765C2FE1148B8F6500BD5654 /* IRC++.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IRC++.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		765C2FE1148B8F6500BD5654 /* IRC++.adiumPlugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IRC++.adiumPlugin"; sourceTree = BUILT_PRODUCTS_DIR; };
 		765C2FE4148B8F6500BD5654 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		765C2FE7148B8F6500BD5654 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		765C2FE8148B8F6500BD5654 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		765C2FE9148B8F6500BD5654 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		765C2FEC148B8F6500BD5654 /* IRC++-Info.plist */ = {isa = PBXFileReference; path = "IRC++-Info.plist"; sourceTree = "<group>"; };
+		765C2FEC148B8F6500BD5654 /* IRC++-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IRC++-Info.plist"; sourceTree = "<group>"; };
 		765C2FEE148B8F6500BD5654 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		765C2FF0148B8F6500BD5654 /* IRC++-Prefix.pch */ = {isa = PBXFileReference; path = "IRC++-Prefix.pch"; sourceTree = "<group>"; };
+		765C2FF0148B8F6500BD5654 /* IRC++-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IRC++-Prefix.pch"; sourceTree = "<group>"; };
+		765C2FF6148B8FFA00BD5654 /* Adium.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Adium.framework; path = ../adium3/build/Debug/Adium.framework; sourceTree = "<group>"; };
+		765C2FF8148B902400BD5654 /* ChatCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ChatCore.framework; sourceTree = "<group>"; };
+		765C2FFB148B906400BD5654 /* AIIPPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIIPPlugin.h; path = Source/AIIPPlugin.h; sourceTree = "<group>"; };
+		765C2FFC148B906400BD5654 /* AIIPPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIIPPlugin.m; path = Source/AIIPPlugin.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -28,6 +35,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				765C2FE5148B8F6500BD5654 /* Cocoa.framework in Frameworks */,
+				765C2FF7148B8FFA00BD5654 /* Adium.framework in Frameworks */,
+				765C2FF9148B902400BD5654 /* ChatCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,7 +55,7 @@
 		765C2FE2148B8F6500BD5654 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				765C2FE1148B8F6500BD5654 /* IRC++.bundle */,
+				765C2FE1148B8F6500BD5654 /* IRC++.adiumPlugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,6 +63,8 @@
 		765C2FE3148B8F6500BD5654 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				765C2FF8148B902400BD5654 /* ChatCore.framework */,
+				765C2FF6148B8FFA00BD5654 /* Adium.framework */,
 				765C2FE4148B8F6500BD5654 /* Cocoa.framework */,
 				765C2FE6148B8F6500BD5654 /* Other Frameworks */,
 			);
@@ -73,6 +84,7 @@
 		765C2FEA148B8F6500BD5654 /* IRC++ */ = {
 			isa = PBXGroup;
 			children = (
+				765C2FFA148B903C00BD5654 /* Source */,
 				765C2FEB148B8F6500BD5654 /* Supporting Files */,
 			);
 			path = "IRC++";
@@ -86,6 +98,15 @@
 				765C2FF0148B8F6500BD5654 /* IRC++-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		765C2FFA148B903C00BD5654 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				765C2FFB148B906400BD5654 /* AIIPPlugin.h */,
+				765C2FFC148B906400BD5654 /* AIIPPlugin.m */,
+			);
+			name = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -105,7 +126,7 @@
 			);
 			name = "IRC++";
 			productName = "IRC++";
-			productReference = 765C2FE1148B8F6500BD5654 /* IRC++.bundle */;
+			productReference = 765C2FE1148B8F6500BD5654 /* IRC++.adiumPlugin */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -149,6 +170,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				765C2FFD148B906400BD5654 /* AIIPPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,7 +210,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.6;
 			};
 			name = Debug;
 		};
@@ -207,31 +229,41 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.6;
 			};
 			name = Release;
 		};
 		765C2FF4148B8F6500BD5654 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../adium3/build/Debug\"",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRC++/IRC++-Prefix.pch";
 				INFOPLIST_FILE = "IRC++/IRC++-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				INSTALL_PATH = "“$(HOME)/Library/Application Support/Adium 2.0/PlugIns/”";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = bundle;
+				WRAPPER_EXTENSION = adiumPlugin;
 			};
 			name = Debug;
 		};
 		765C2FF5148B8F6500BD5654 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../adium3/build/Debug\"",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRC++/IRC++-Prefix.pch";
 				INFOPLIST_FILE = "IRC++/IRC++-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				INSTALL_PATH = "“$(HOME)/Library/Application Support/Adium 2.0/PlugIns/”";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				WRAPPER_EXTENSION = bundle;
+				WRAPPER_EXTENSION = adiumPlugin;
 			};
 			name = Release;
 		};

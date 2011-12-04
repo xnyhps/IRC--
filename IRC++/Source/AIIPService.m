@@ -8,6 +8,7 @@
 
 #import "AIIPService.h"
 #import "AIIPAccount.h"
+#import "AIIPAccountViewController.h"
 #import <AIUtilities/AIImageAdditions.h>
 #import <AIUtilities/AICharacterSetAdditions.h>
 
@@ -17,10 +18,10 @@
 	return [AIIPAccount class];
 }
 
-//- (AIAccountViewController *)accountViewController{
-//    return [ESIRCAccountViewController accountViewController];
-//}
-//
+- (AIAccountViewController *)accountViewController{
+    return [AIIPAccountViewController accountViewController];
+}
+
 //- (DCJoinChatViewController *)joinChatView{
 //	return [ESIRCJoinChatViewController joinChatView];
 //}

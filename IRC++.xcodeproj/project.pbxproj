@@ -10,10 +10,10 @@
 		765C2FE5148B8F6500BD5654 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 765C2FE4148B8F6500BD5654 /* Cocoa.framework */; };
 		765C2FEF148B8F6500BD5654 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 765C2FED148B8F6500BD5654 /* InfoPlist.strings */; };
 		765C2FF7148B8FFA00BD5654 /* Adium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 765C2FF6148B8FFA00BD5654 /* Adium.framework */; };
-		765C2FF9148B902400BD5654 /* ChatCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 765C2FF8148B902400BD5654 /* ChatCore.framework */; };
 		765C2FFD148B906400BD5654 /* AIIPPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 765C2FFC148B906400BD5654 /* AIIPPlugin.m */; };
 		765C3000148B916600BD5654 /* AIIPService.m in Sources */ = {isa = PBXBuildFile; fileRef = 765C2FFF148B916600BD5654 /* AIIPService.m */; };
 		765C3003148B930100BD5654 /* AIIPAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = 765C3002148B930100BD5654 /* AIIPAccount.m */; };
+		765C3005148B948700BD5654 /* ChatCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 765C3004148B948700BD5654 /* ChatCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,13 +26,13 @@
 		765C2FEE148B8F6500BD5654 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		765C2FF0148B8F6500BD5654 /* IRC++-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IRC++-Prefix.pch"; sourceTree = "<group>"; };
 		765C2FF6148B8FFA00BD5654 /* Adium.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Adium.framework; path = ../adium3/build/Debug/Adium.framework; sourceTree = "<group>"; };
-		765C2FF8148B902400BD5654 /* ChatCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ChatCore.framework; sourceTree = "<group>"; };
 		765C2FFB148B906400BD5654 /* AIIPPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIIPPlugin.h; path = Source/AIIPPlugin.h; sourceTree = "<group>"; };
 		765C2FFC148B906400BD5654 /* AIIPPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIIPPlugin.m; path = Source/AIIPPlugin.m; sourceTree = "<group>"; };
 		765C2FFE148B916600BD5654 /* AIIPService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIIPService.h; path = Source/AIIPService.h; sourceTree = "<group>"; };
 		765C2FFF148B916600BD5654 /* AIIPService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIIPService.m; path = Source/AIIPService.m; sourceTree = "<group>"; };
 		765C3001148B930100BD5654 /* AIIPAccount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AIIPAccount.h; path = Source/AIIPAccount.h; sourceTree = "<group>"; };
 		765C3002148B930100BD5654 /* AIIPAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AIIPAccount.m; path = Source/AIIPAccount.m; sourceTree = "<group>"; };
+		765C3004148B948700BD5654 /* ChatCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ChatCore.framework; path = "IRC++/Frameworks/ChatCore.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +42,7 @@
 			files = (
 				765C2FE5148B8F6500BD5654 /* Cocoa.framework in Frameworks */,
 				765C2FF7148B8FFA00BD5654 /* Adium.framework in Frameworks */,
-				765C2FF9148B902400BD5654 /* ChatCore.framework in Frameworks */,
+				765C3005148B948700BD5654 /* ChatCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,7 +69,7 @@
 		765C2FE3148B8F6500BD5654 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				765C2FF8148B902400BD5654 /* ChatCore.framework */,
+				765C3004148B948700BD5654 /* ChatCore.framework */,
 				765C2FF6148B8FFA00BD5654 /* Adium.framework */,
 				765C2FE4148B8F6500BD5654 /* Cocoa.framework */,
 				765C2FE6148B8F6500BD5654 /* Other Frameworks */,
@@ -251,7 +251,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../adium3/build/Debug\"",
-					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/IRC++/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRC++/IRC++-Prefix.pch";
@@ -268,7 +268,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../adium3/build/Debug\"",
-					"\"$(SRCROOT)\"",
+					"\"$(SRCROOT)/IRC++/Frameworks\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRC++/IRC++-Prefix.pch";

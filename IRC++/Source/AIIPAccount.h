@@ -7,7 +7,10 @@
 //
 
 #import <Adium/AIAccount.h>
+#import <ChatCore/MVChatConnection.h>
 
-@interface AIIPAccount : AIAccount
+@interface AIIPAccount : AIAccount {
+	MVChatConnection *connection;
+}
 
 @end

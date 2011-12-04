@@ -189,10 +189,10 @@ AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status) {
 	
 	if (reason) {
 		messageStr = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ left the room (%@).", @"", [NSBundle bundleForClass:[self class]] , nil),
-					  [user displayName]];
+					  [user displayName], reason];
 	} else {
 		messageStr = [NSString stringWithFormat:NSLocalizedStringFromTableInBundle(@"%@ left the room.", @"", [NSBundle bundleForClass:[self class]] , nil),
-					  [user displayName], reason];
+					  [user displayName]];
 	}
 	
 	AIContentEvent *event = [AIContentEvent eventInChat:chat
@@ -200,7 +200,7 @@ AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status) {
 											destination:self
 												   date:[NSDate date]
 												message:[[[NSAttributedString alloc] initWithString:messageStr] autorelease]
-											   withType:@"ChatCore"];
+											   withType:@"IRC++"];
 	
 	event.filterContent = YES;
 	

@@ -17,6 +17,7 @@
 #import <Adium/AIContentEvent.h>
 #import <Adium/ESDebugAILog.h>
 #import <Adium/AIContentControllerProtocol.h>
+#import <Adium/AIContactControllerProtocol.h>
 #import <Adium/AIChatControllerProtocol.h>
 
 AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status);
@@ -277,15 +278,17 @@ AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status) {
 	AIChat *chat = [room attributeForKey:@"AIChat"];
 	NSDictionary *userInfo = [notification userInfo];
 	AIListContact *sourceContact = [self contactWithUID:[[userInfo valueForKey:@"user"] displayName]];
-	NSData *message = [userInfo valueForKey:@"message"];
+	NSData *messageData = [userInfo valueForKey:@"message"];
 	
-	if (!message) {
+	if (!messageData) {
+		AILogWithSignature(@"messageReceived without message: %@?" , notification);
 		return;
 	}
 	
-	NSString *messageStr = [NSString stringWithUTF8String:[message bytes]];
+	NSAttributedString *message = [NSAttributedString attributedStringWithChatFormat:messageData options:nil];
 	
-	if (!messageStr) {
+	if (!message) {
+		AILogWithSignature(@"Failed to parse the message: %@", messageData);
 		return;
 	}
 	
@@ -293,7 +296,7 @@ AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status) {
 														   withSource:[[sourceContact UID] isEqualToString:[self UID]]? (AIListObject *)self : (AIListObject *)sourceContact
 														  destination:self
 																 date:[NSDate date]
-															  message:[[[NSAttributedString alloc] initWithString:messageStr] autorelease]
+															  message:message
 															autoreply:NO];
 	[adium.contentController receiveContentObject:messageObject];
 }
@@ -472,6 +475,9 @@ AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status) {
 	event.filterContent = YES;
 	
 	[adium.contentController receiveContentObject:event];
+	
+	[[NSNotificationCenter defaultCenter] postNotificationName:Chat_ParticipatingListObjectsChanged
+														object:chat];
 }
 
 - (void)memberBanned:(NSNotification *)notification
@@ -492,6 +498,69 @@ AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status) {
 - (void)bannedMembersSynced:(NSNotification *)notification
 {
 	AILogWithSignature(@"%@", notification);
+}
+
+- (void)memberNicknameChanged:(NSNotification *)notification
+{
+	AILogWithSignature(@"%@", notification);
+	
+	MVChatUser *user = [notification object];
+	NSSet *openChats = [adium.chatController openChats];
+	NSString *oldUID = [[notification userInfo] valueForKey:@"oldNickname"];
+	NSString *newUID = [user displayName];
+	
+	AIListContact *contact = [adium.contactController existingContactWithService:self.service account:self UID:oldUID];
+	
+	if (contact) {
+		[adium.contactController setUID:newUID forContact:contact];
+	} else {
+		contact = [self contactWithUID:newUID];
+	}
+	
+	for (AIChat *chat in openChats) {
+		if (chat.account == self) {
+			MVChatRoom *room = [chat identifier];
+			
+			if ([room hasUser:user]) {
+				[chat removeSavedValuesForContactUID:oldUID];
+				
+				[chat setFlags:convertFlags([room modesForMemberUser:user], [user status]) forContact:contact];
+				[chat setAlias:[user displayName] forContact:contact];
+				
+				if (contact.isStranger) {
+					[contact setServersideAlias:[user displayName] silently:NO];
+				}
+				
+				// Post an update notification since we modified the user entirely.
+				[[NSNotificationCenter defaultCenter] postNotificationName:Chat_ParticipatingListObjectsChanged
+																	object:chat];
+				
+				NSString *message = [NSString stringWithFormat:NSLocalizedString(@"%@ is now known as %@.", nil), oldUID, newUID];
+				
+				AIContentEvent *event = [AIContentEvent eventInChat:chat
+														 withSource:nil
+														destination:self
+															   date:[NSDate date]
+															message:[[[NSAttributedString alloc] initWithString:message] autorelease]
+														   withType:@"IRC++"];
+				
+				event.filterContent = YES;
+				
+				[adium.contentController receiveContentObject:event];
+			}
+		}
+	}
+}
+
+- (BOOL)closeChat:(AIChat *)chat
+{
+	MVChatRoom *room = [chat identifier];
+	
+	[room part];
+	
+	[chat setIdentifier:nil];
+	
+	return YES;
 }
 
 - (BOOL)openChat:(AIChat *)chat
@@ -551,6 +620,11 @@ AIGroupChatFlags convertFlags(NSUInteger flags, MVChatUserStatus status) {
 											 selector:@selector(bannedMembersSynced:)
 												 name:MVChatRoomBannedUsersSyncedNotification
 											   object:room];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(memberNicknameChanged:)
+												 name:MVChatUserNicknameChangedNotification
+											   object:nil];
 	
 	chat.hideUserIconAndStatus = YES;
 	
